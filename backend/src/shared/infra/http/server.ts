@@ -40,6 +40,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 app.listen(3333, () => {
   console.log('\n');
   console.log('✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨');
-  console.log(`✨ Server started on ${process.env.APP_WEB_URL}             ✨`);
+  console.log(`✨ Server started on ${process.env.APP_API_URL}             ✨`);
   console.log('✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨');
 });
