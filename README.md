@@ -1,2 +1,2 @@
-[coverage-badge-green]: './coverage/badge-functions.svg'
+![Alt text](coverage/badge-functions.svg)
 # Couple Tasking
