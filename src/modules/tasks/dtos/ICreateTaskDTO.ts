@@ -3,5 +3,5 @@ export default interface ICreateTaskDTO {
   observation?: string;
   category?: string;
   difficulty: string;
-  dueDate: Date;
+  dueDate: string;
 }
