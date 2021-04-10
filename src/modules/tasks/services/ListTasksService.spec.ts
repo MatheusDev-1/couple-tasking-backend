@@ -19,7 +19,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const secondTask = await createTask.execute({
@@ -27,7 +27,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const thirdTask = await createTask.execute({
@@ -35,7 +35,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const allTasks = await listTasks.execute({});
@@ -49,7 +49,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     await createTask.execute({
@@ -57,7 +57,7 @@ describe('List all tasks without query parameters', () => {
       observation: '',
       category: 'Garagem',
       difficulty: 'Difícil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const thirdTask = await createTask.execute({
@@ -65,7 +65,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const allTasks = await listTasks.execute({
@@ -81,7 +81,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const secondTask = await createTask.execute({
@@ -89,7 +89,7 @@ describe('List all tasks without query parameters', () => {
       observation: '',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     await createTask.execute({
@@ -97,7 +97,7 @@ describe('List all tasks without query parameters', () => {
       observation: '',
       category: 'Sala de Estar',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const allTasks = await listTasks.execute({
@@ -113,7 +113,7 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date('10/01/2021'),
+      dueDate: new Date('10/01/2021').toLocaleDateString(),
     });
 
     const secondTask = await createTask.execute({
@@ -121,7 +121,7 @@ describe('List all tasks without query parameters', () => {
       observation: '',
       category: 'Sala de Estar',
       difficulty: 'Fácil',
-      dueDate: new Date('10/01/2021'),
+      dueDate: new Date('10/01/2021').toLocaleDateString(),
     });
 
     await createTask.execute({
@@ -129,11 +129,11 @@ describe('List all tasks without query parameters', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const allTasks = await listTasks.execute({
-      dueDate: new Date('10/01/2021'),
+      dueDate: new Date('10/01/2021').toLocaleDateString(),
     });
 
     expect(allTasks).toEqual([firstTask, secondTask]);
