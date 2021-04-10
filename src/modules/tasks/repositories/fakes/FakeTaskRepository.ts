@@ -1,5 +1,5 @@
 import ITasksRepository from '@modules/tasks/repositories/ITasksRepository';
-import ICreateUserDTO from '@modules/tasks/dtos/ICreateTaskDTO';
+import ICreateTaskDTO from '@modules/tasks/dtos/ICreateTaskDTO';
 import { v4 as uuid_v4 } from 'uuid';
 
 import IFindTasksDTO from '@modules/tasks/dtos/IFindTasksDTO';
@@ -29,7 +29,7 @@ class FakeTaskRepository implements ITasksRepository {
     return task;
   }
 
-  public async createTask(taskData: ICreateUserDTO): Promise<Task> {
+  public async createTask(taskData: ICreateTaskDTO): Promise<Task> {
     const task = new Task();
 
     Object.assign(task, { id: uuid_v4() }, taskData);
