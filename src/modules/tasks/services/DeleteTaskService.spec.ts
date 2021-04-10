@@ -1,3 +1,5 @@
+import AppError from '@shared/errors/AppError';
+import { rejects } from 'assert';
 import FakeTaskRepository from '../repositories/fakes/FakeTaskRepository';
 import CreateTaskService from './CreateTaskService';
 import DeleteTaskService from './DeleteTaskService';
@@ -22,7 +24,7 @@ describe('Delete task by id', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     const secondTask = await createTask.execute({
@@ -30,7 +32,7 @@ describe('Delete task by id', () => {
       observation: '',
       category: 'Sala de Estar',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     if (firstTask) {
@@ -40,5 +42,9 @@ describe('Delete task by id', () => {
 
       expect(tasks).toEqual([secondTask]);
     }
+  });
+
+  it('should not be able to delete a task by its id if the task does', async () => {
+    await expect( async () => deleteTask.execute('')).rejects.toBeInstanceOf(AppError);
   });
 });

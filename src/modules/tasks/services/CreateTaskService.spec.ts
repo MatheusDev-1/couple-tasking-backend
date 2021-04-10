@@ -17,7 +17,7 @@ describe('Create Task', () => {
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
       category: 'Cozinha',
       difficulty: 'Fácil',
-      dueDate: new Date(),
+      dueDate: new Date().toLocaleDateString(),
     });
 
     expect(task).toHaveProperty('name');
