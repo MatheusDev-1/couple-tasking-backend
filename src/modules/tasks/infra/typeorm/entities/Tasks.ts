@@ -30,7 +30,7 @@ class Task {
   quality: string;
 
   @Column()
-  dueDate: Date;
+  dueDate: Date | string;
 
   @Column()
   finishedDate: Date;
