@@ -29,9 +29,11 @@ tasksRouter.post(
     [Segments.BODY]: {
       name: Joi.string().required().max(256),
       observation: Joi.string().optional().allow('').default('').max(256),
-      category: Joi.string().required().max(25),
+      category: {
+        name: Joi.string().required().max(50),
+      },
       difficulty: Joi.string().required().max(25),
-      dueDate: Joi.date().required(),
+      dueDate: Joi.string().required(),
     },
   }),
   tasksController.create,
