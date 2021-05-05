@@ -27,7 +27,7 @@ export default class CreateTasks1597807100485 implements MigrationInterface {
           {
             name: 'category',
             type: 'varchar',
-            isNullable: false,
+            isNullable: true,
           },
           {
             name: 'points',
@@ -47,7 +47,7 @@ export default class CreateTasks1597807100485 implements MigrationInterface {
           },
           {
             name: 'dueDate',
-            type: 'date',
+            type: 'timestamp',
           },
           {
             name: 'finishedDate',

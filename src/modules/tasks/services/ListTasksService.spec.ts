@@ -1,15 +1,18 @@
+import FakeCategoryRepository from '@modules/categories/repositories/fakes/FakeCategoryRepository';
 import FakeTaskRepository from '../repositories/fakes/FakeTaskRepository';
 import CreateTaskService from './CreateTaskService';
 import ListTasksService from './ListTasksService';
 
 let fakeTaskRepository: FakeTaskRepository;
+let fakeCategoryRepository: FakeCategoryRepository;
 let createTask: CreateTaskService;
 let listTasks: ListTasksService;
 
 describe('List all tasks without query parameters', () => {
   beforeEach(() => {
     fakeTaskRepository = new FakeTaskRepository();
-    createTask = new CreateTaskService(fakeTaskRepository);
+    fakeCategoryRepository = new FakeCategoryRepository();
+    createTask = new CreateTaskService(fakeTaskRepository, fakeCategoryRepository);
     listTasks = new ListTasksService(fakeTaskRepository);
   });
 
@@ -17,25 +20,31 @@ describe('List all tasks without query parameters', () => {
     const firstTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+         name: 'Cozinha'
+        },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const secondTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const thirdTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const allTasks = await listTasks.execute({});
@@ -47,25 +56,31 @@ describe('List all tasks without query parameters', () => {
     const firstTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     await createTask.execute({
       name: 'Lavar carro',
       observation: '',
-      category: 'Garagem',
+      category: {
+        name: 'Garagem',
+      },
       difficulty: 'Difícil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const thirdTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const allTasks = await listTasks.execute({
@@ -79,25 +94,31 @@ describe('List all tasks without query parameters', () => {
     const firstTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const secondTask = await createTask.execute({
       name: 'Aspirar sala',
       observation: '',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     await createTask.execute({
       name: 'Limpar chão',
       observation: '',
-      category: 'Sala de Estar',
+      category: {
+        name: 'Sala de Estar',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const allTasks = await listTasks.execute({
@@ -111,29 +132,35 @@ describe('List all tasks without query parameters', () => {
     const firstTask = await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date('10/01/2021').toLocaleDateString(),
+      dueDate: new Date('10/01/2021').toISOString(),
     });
 
     const secondTask = await createTask.execute({
       name: 'Aspirar sala',
       observation: '',
-      category: 'Sala de Estar',
+      category: {
+        name: 'Sala de Estar',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date('10/01/2021').toLocaleDateString(),
+      dueDate: new Date('10/01/2021').toISOString(),
     });
 
     await createTask.execute({
       name: 'Lavar louça',
       observation: 'Lavar bem as panelas e não esquecer de limpar a pia',
-      category: 'Cozinha',
+      category: {
+        name: 'Cozinha',
+      },
       difficulty: 'Fácil',
-      dueDate: new Date().toLocaleDateString(),
+      dueDate: new Date().toISOString(),
     });
 
     const allTasks = await listTasks.execute({
-      dueDate: new Date('10/01/2021').toLocaleDateString(),
+      dueDate: new Date('10/01/2021').toISOString(),
     });
 
     expect(allTasks).toEqual([firstTask, secondTask]);

@@ -3,7 +3,6 @@ import { container } from 'tsyringe';
 import CreateTaskService from '@modules/tasks/services/CreateTaskService';
 import DeleteTaskService from '@modules/tasks/services/DeleteTaskService';
 import ListTasksService from '@modules/tasks/services/ListTasksService';
-import { Between } from 'typeorm';
 
 export default class TasksController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -51,11 +50,11 @@ export default class TasksController {
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { cpf } = request.params;
+    const { id } = request.params;
 
     const deleteService = container.resolve(DeleteTaskService);
 
-    await deleteService.execute(cpf);
+    await deleteService.execute(id);
 
     return response.json({ message: 'Task data deleted' });
   }

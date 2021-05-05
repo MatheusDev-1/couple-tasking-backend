@@ -20,6 +20,7 @@ class TasksRepository
   public async findTasks(data: IFindTasksDTO): Promise<Task[]> {
     const tasks = await this.ormRepository.find({
       where: data,
+      relations: ['category'],
     })
 
     return tasks;

@@ -12,9 +12,9 @@ class FakeTaskRepository implements ITasksRepository {
     if (Object.keys(data).length >= 1) {
       const queriedTasks = this.tasks.filter(
         task =>
-          task.category === data.category ||
+          task.category.name === data.category ||
           task.difficulty === data.difficulty ||
-          task.dueDate === data.dueDate
+          new Date(task.dueDate).toISOString() === data.dueDate
       );
 
       return queriedTasks;

@@ -6,6 +6,6 @@ export default interface ITasksRepository {
   findTasks({ difficulty, category, dueDate }: IFindTasksDTO): Promise<Task[]>;
   findById(id: string): Promise<Task | undefined>;
   deleteTask(task: Task): Promise<any>;
-  createTask(data: ICreateTaskDTO): Promise<Task>;
+  createTask({ name, observation,category, difficulty, dueDate }: ICreateTaskDTO): Promise<Task>;
   saveORM(task: Task): Promise<Task>;
 }
